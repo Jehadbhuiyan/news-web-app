@@ -1,15 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {  Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
+import Nevber from "./component/Nevbar";
+import themes from './../../node_modules/daisyui/theme/object.d';
+import NebLink from "./component/NebLink";
+import Marquee from "./component/Marquee";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const notoSerifBengali = Noto_Serif_Bengali({
+  subsets: ["latin",'bengali'],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Create Next App",
@@ -20,9 +19,17 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-theme='light'
+      className={` ${notoSerifBengali.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Nevber></Nevber>
+        <NebLink></NebLink>
+        <Marquee></Marquee>
+        <main className="w-full max-w-7xl mx-auto  items-center justify-between pt-5 px-4">
+          {children}
+        </main>
+        </body>
     </html>
   );
 }
